@@ -1,0 +1,26 @@
+body,
+html {
+  margin: 0px;
+  padding: 0px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  background-color: #2B6BB6;
+  margin-bottom: 20px;
+}
+
+.logo {
+  margin-left: 10px;
+  align-self: flex-start;
+}
+
+h3 {
+  text-align: center;
+  margin: 0 auto;
+  color: #ffffff;
+  font-size: 36px;
+}

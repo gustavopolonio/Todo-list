@@ -1,0 +1,24 @@
+body,
+html {
+    margin: 0px;
+    padding: 0px;
+}
+
+.tarefa2 {
+    padding-left: 10px;
+    font-size: 22px;
+    border-bottom: 2px solid black;
+    border-left: 2px solid black;
+}
+
+.imagem {
+    text-align: center;
+    border-bottom: 2px solid black;
+    border-left: 2px solid black;
+}
+
+.imagem img:first-child {
+    margin-right: 50px;
+  }
+
+

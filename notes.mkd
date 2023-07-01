@@ -1,0 +1,8 @@
+- Bootstrap errado (// https://react-bootstrap.netlify.app/docs/components/modal)
+- Fazer o modal [ok]
+- Update Tarefa (Só aparece depois de atualizar o navegador) [ok]
+- Tarefas em ordem de data e horário (sort) [ok]
+- Excluir tarefa [ok]
+- Criar tarefa como importante e jogar pra primeiro (sort) [ok]
+- Marcar/desmarcar como importante e jogar pra primeiro [ok]
+- Salvar tarefa no localStorage e recuperar os dados qnd carregar a pág [ok]

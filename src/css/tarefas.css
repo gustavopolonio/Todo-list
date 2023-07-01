@@ -1,0 +1,68 @@
+body,
+html {
+  margin: 0px;
+  padding: 0px;
+}
+
+.tarefas {
+  width: 1200px;
+  height: 450px;
+  background-color: white;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  border-radius: 15px;
+}
+
+.btn {
+  color: white;
+  padding: 10px 20px;
+  font-size: 22px;  
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-left: 170px;
+  margin-bottom: 20px;
+  border: 1px solid black
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  vertical-align: center;
+}
+
+.data {
+  text-align: center;
+  font-size: 22px;
+  border-bottom: 2px solid black;
+}
+
+.hora,
+.tarefa,
+.status {
+  text-align: center;
+  font-size: 22px;
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
+}
+
+.data,
+.hora {
+  width: 15%;
+}
+
+.tarefa {
+  width: 50%;
+}
+
+.status {
+  width: 20%;
+}
+
