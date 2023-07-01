@@ -1,22 +1,23 @@
-// https://react-bootstrap.netlify.app/docs/components/modal
 import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 
 export function CadastroTarefasModal({ show, handleClose, handleUpdateTarefas }) {
+  // Criando os 3 estados para armazenar os valores dos 3 inputs
   const [data, setData] = useState("")
 	const [time, setTime] = useState("")
 	const [text, setText] = useState("")
 
-  function getData(isImportant) {
+  function getData(isImportant) { // Função para pegar os valores dos inputs
 		const day = data.split("-")[2]
 		const mes = data.split("-")[1]
 		const ano = data.split("-")[0]
-		const dataFinal = day + "/" + mes + "/" + ano
+		const dataFinal = day + "/" + mes + "/" + ano // Data formatada
 
+    // Transformando a data e o horário em timestamp (tempo em milisegundos)
     const dateInTimestamp = Date.parse(`${data} ${time}`)
 
-		const dataTarefa = {
+		const dataTarefa = { // Criando a nova tarefa com os dados dos inputs
       id: Date.now(),
 			data: dataFinal,
 			horario: time,
@@ -26,8 +27,10 @@ export function CadastroTarefasModal({ show, handleClose, handleUpdateTarefas })
       isFinished: false
 		}
 
+    // Salvando a nova tarefa no estado
 		handleUpdateTarefas(dataTarefa)
 
+    // Fechar o modal do bootstrap
     handleClose()
 	}
 

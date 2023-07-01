@@ -30,26 +30,40 @@ function Tarefas() {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
+    // Quando a página carrega, pego as tarefas do local storage e salvo no estado
     const tarefasStoraged = localStorage.getItem("tarefas")
     const tarefasFormatadas = JSON.parse(tarefasStoraged)
     setTarefas(tarefasFormatadas)
   }, [])
 
   function handleClose() {
+    // Fechar modal bootatrap
     setShowModal(false)
   }
 
   function handleShow() {
+    // Abrir modal bootatrap
     setShowModal(true)
   }
   
   function updateTarefas(tarefa) {
-    const sortAux = [...tarefas, tarefa]
+    // Quando cria uma nova tarefa, atualiza o estado
+    let sortAux
 
+    if (tarefas) {
+      // Criando nova tarefa e já haviam tarefas criadas antes
+      sortAux = [...tarefas, tarefa]
+    } else {
+      // Criando nova tarefa, mas não haviam tarefas criadas antes
+      sortAux = [tarefa]
+    }
+
+    // Ordenando as tarefas por dia e horário
     const sortedTarefas = sortTarefas(sortAux)
 
     setTarefas(sortedTarefas)
 
+    // Salvando as tarefas ordenadas no local storage
     localStorage.setItem("tarefas", JSON.stringify(sortedTarefas))
   }
 
@@ -59,45 +73,26 @@ function Tarefas() {
       return a.dateInTimestamp - b.dateInTimestamp
     })
 
-    // Ordena se é importante
-    // sortAux.sort((a,b) => {
-    //   return b.isImportant - a.isImportant
-    // })
-
     return sortAux
   }
 
   function deleteTarefa(id) {
+    // Deletando uma tarefa pelo ID dela
     const newTarefas = tarefas.filter(tarefa => tarefa.id !== id)
     setTarefas(newTarefas)
 
+    // Salvando as tarefas no local storage
     localStorage.setItem("tarefas", JSON.stringify(newTarefas))
   }
 
-  // function markAsImportant(id) {
-  //   const newTarefas = tarefas.map(tarefa => {
-  //     if (tarefa.id !== id) {
-  //       return tarefa
-  //     } else {
-  //       return {
-  //         ...tarefa,
-  //         isImportant: !tarefa.isImportant
-  //       }
-  //     }
-  //   })
-
-  //   const sortedTarefas = sortTarefas(newTarefas)
-  //   setTarefas(sortedTarefas)
-
-  //   localStorage.setItem("tarefas", JSON.stringify(sortedTarefas))
-  // }
-
   function markAsFinished(id) {
-    console.log(id)
+    // Marcando uma tarefa como finalizada de acordo com o ID dela
     const newTarefas = tarefas.map(tarefa => {
       if (tarefa.id !== id) {
+        // A tarefa analisada não é a que tem que ser marcada
         return tarefa
       } else {
+        // A tarefa analisada é a que tem que ser marcada
         return {
           ...tarefa,
           isFinished: true
@@ -106,6 +101,7 @@ function Tarefas() {
     })
 
     setTarefas(newTarefas)
+    // Salvando as tarefas no local storage
     localStorage.setItem("tarefas", JSON.stringify(newTarefas))
   }
 

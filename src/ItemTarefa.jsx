@@ -7,6 +7,7 @@ import checkBoxFinished from "./img/checkbox-not-marked.png"
 function ItemTarefa({ listagem, handleDeleteTarefa, handleMarkAsFinished }) {
     
     return (
+        // Trocando a cor da tarefa importante
         <tr style={listagem.isImportant ? { backgroundColor: 'green' } : {}}>
             <td className="data">
                 <h5>{listagem.data}</h5>
@@ -26,12 +27,12 @@ function ItemTarefa({ listagem, handleDeleteTarefa, handleMarkAsFinished }) {
                     onClick={() => handleDeleteTarefa(listagem.id)}
                 />
                 {listagem.isFinished ? (
+                    // Checando se a tarefa está finalizada para colocar o botão certo
                     <img 
                         src={checkBox}
                         alt="Checkbox"
                         width={30}
                         height={30}
-                        // onClick={() => handleMarkAsFinished(listagem.id)}
                     />
                 ) : (
                     <img 
