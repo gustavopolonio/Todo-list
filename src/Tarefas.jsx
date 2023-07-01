@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react';
-// import CadastroTarefas from './CadastroTarefas';
-// import { dados } from './listagem';
 import ItemTarefa from './ItemTarefa';
 import '../src/css/tarefas.css';
 import Button from 'react-bootstrap/Button';
@@ -33,7 +31,7 @@ function Tarefas() {
     // Quando a página carrega, pego as tarefas do local storage e salvo no estado
     const tarefasStoraged = localStorage.getItem("tarefas")
     const tarefasFormatadas = JSON.parse(tarefasStoraged)
-    setTarefas(tarefasFormatadas)
+    setTarefas(tarefasFormatadas || []) // Se já tinham tarefas salvas no local storage: coloca essas tarefas no estado. Se não tinha nenhuma tarefa no storage: cria um array vazio
   }, [])
 
   function handleClose() {
@@ -46,17 +44,8 @@ function Tarefas() {
     setShowModal(true)
   }
   
-  function updateTarefas(tarefa) {
-    // Quando cria uma nova tarefa, atualiza o estado
-    let sortAux
-
-    if (tarefas) {
-      // Criando nova tarefa e já haviam tarefas criadas antes
-      sortAux = [...tarefas, tarefa]
-    } else {
-      // Criando nova tarefa, mas não haviam tarefas criadas antes
-      sortAux = [tarefa]
-    }
+  function updateTarefas(tarefa) { // Quando cria uma nova tarefa, atualiza o estado
+    const sortAux = [...tarefas, tarefa] // Atualizando o estado de tarefas
 
     // Ordenando as tarefas por dia e horário
     const sortedTarefas = sortTarefas(sortAux)
